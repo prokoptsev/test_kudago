@@ -1,0 +1,73 @@
+[
+    {
+        "pk": 1,
+        "model": "feedmapper.mapping",
+        "fields": {
+            "source": "test.xml",
+            "parser": "feedmapper.parsers.XMLParser",
+            "data_map": {
+                "models": {
+                    "content.Event": {
+                        "fields": {
+                            "id": ".@id",
+                            "title": "title",
+                            "is_free": ".@price",
+                            "age_restricted": "age_restricted",
+                            "text": "text"
+
+                        },
+                        "identifier": "id",
+                        "nodePath": "events.event"
+                    },
+                    "content.Place": {
+                        "fields": {
+                            "id": ".@id",
+                            "title": "title",
+                            "city": "city",
+                            "address": "address",
+                            "latitude": "coordinates.@latitude",
+                            "longitude": "coordinates.@longitude",
+                            "text": "text"
+                        },
+                        "identifier": "id",
+                        "nodePath": "places.place"
+                    },
+                    "content.Schedule": {
+                        "fields": {
+                            "event_id": ".@event",
+                            "place_id": ".@place",
+                            "date": ".@date",
+                            "start": ".@time",
+                            "finish": {
+                                "field": ".@timetill",
+                                "default": null
+                            }
+                        },
+                        "identifier": "id",
+                        "nodePath": "schedule.session"
+                    }
+                }
+            },
+            "purge": true,
+            "label": "kudago.com"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$24000$T8HA6auKH7cZ$/UQ+w7Hnir52IZ2Tm7SXk/ufYbobSL83Daa9cB55Qvo=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "user",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2016-01-01T00:00:00.000Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
